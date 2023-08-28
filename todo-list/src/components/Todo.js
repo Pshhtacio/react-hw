@@ -1,7 +1,12 @@
-import { useState } from "react";
+import {useState} from "react";
 
-const Todo = () =>{
+const Todo = (props) => {
+    return (
+        <div>
+            <span>{props.text}</span>
+        </div>
+    );
 
-}
+};
 
 export default Todo;
