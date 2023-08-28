@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 const TodoListGenerator = (props) => {
-    const [ text, setText ] = useState("");
+    const [text, setText] = useState("");
 
     const onInputChange = (event) => {
         setText(event.target.value);
     };
 
     const onSubmit = () => {
-        props.onSubmit();
+        props.onSubmit(text);
         setText("");
     };
 
@@ -19,7 +19,7 @@ const TodoListGenerator = (props) => {
                 value={text}
                 onChange={onInputChange}
             />
-            <button onClick={onSubmit}>Submit</button>
+            <button onClick={onSubmit}>Add</button>
         </div>
     );
 };
