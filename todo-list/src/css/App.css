@@ -33,6 +33,8 @@ button {
   cursor: pointer;
 }
 
+button,
+
 button:hover {
   background-color: #0056b3;
 }
@@ -48,6 +50,19 @@ button:hover {
   align-items: center;
   overflow: hidden;
   white-space: normal;
+}
+
+.delete-button {
+  background-color: red;
+  color: white; 
+  border: none; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+}
+
+.delete-button:hover {
+  background-color: firebrick;
 }
 
 .todo-item span {
