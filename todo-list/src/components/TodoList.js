@@ -3,7 +3,7 @@ import TodoListGroup from "./TodoListGroup.js";
 import TodoListGenerator from "./TodoListGenerator.js";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+  const todos = useSelector((state) => state.todo.todoList);
 
   const addTodo = (text) => {
     if (text.trim() !== "") {
