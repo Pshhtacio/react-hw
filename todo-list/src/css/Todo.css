@@ -1,0 +1,39 @@
+
+.todo-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.delete-button {
+  width: 10%;
+  background-color: red;
+  color: white; 
+  border: none; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+}
+
+.delete-button:hover {
+  background-color: firebrick;
+}
+
+.todo-item span {
+  flex-grow: 1;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+span {
+  width: 60%;
+}

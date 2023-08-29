@@ -1,4 +1,4 @@
-import '../css/App.css';
+import '../css/Todo.css';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleTodo } from './todoSlice';
 
@@ -16,13 +16,13 @@ const Todo = (props) => {
 
   return (
     <div className="todo-item">
-      <span
+      <span 
         className={isDone}
         onClick={handleOnToggle}
       >
         {props.todoText}
       </span>
-      <button 
+        <button 
         className='delete-button'
         onClick={handleDelete}
         >x</button>
