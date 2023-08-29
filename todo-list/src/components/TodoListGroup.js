@@ -1,9 +1,8 @@
-import React from "react";
 import Todo from "./Todo";
 
 const TodoListGroup = (props) => {
   return (
-    <div className="todo-list">
+    <div>
       {props.todos.map((item, index) => (
         <Todo
           key={item.id}
