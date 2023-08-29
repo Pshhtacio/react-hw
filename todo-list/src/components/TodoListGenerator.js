@@ -26,9 +26,9 @@ const TodoListGenerator = () => {
             <input
                 type="text"
                 placeholder="Enter a task"
-                ref={ addTodoRef }
+                ref={addTodoRef}
             />
-            <button onClick={ addNewTodo }>Add</button>
+            <button onClick={addNewTodo}>Add</button>
         </div>
     );
 };

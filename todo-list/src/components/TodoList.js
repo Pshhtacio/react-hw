@@ -9,7 +9,7 @@ const TodoList = () => {
   return (
     <div className="container">
       <h1>Todo List</h1>
-      <TodoListGroup todos={ todos } />
+      <TodoListGroup todos={todos} />
       <TodoListGenerator />
     </div>
   );
