@@ -3,27 +3,23 @@ import TodoListGroup from "./TodoListGroup.js";
 import TodoListGenerator from "./TodoListGenerator.js";
 
 const TodoList = () => {
-  const [text, setText] = useState("");
-  const [size, setSize] = useState(0);
   const [todos, setTodos] = useState([]);
 
-  const todoTextInput = (inputText) => {
-    setText(inputText);
-  };
-
-  const onSubmit = () => {
-    const newTodo = { id: size, text: text };
-    setTodos([...todos, newTodo]);
-    setSize(size + 1);
+  const addTodo = (text) => {
+    if (text.trim() !== "") {
+      const newTodo = {
+        id: Date.now(),
+        text: text,
+      };
+      setTodos([...todos, newTodo]);
+    }
   };
 
   return (
-    <div>
-      <TodoListGroup todos={todos} />
-      <TodoListGenerator
-        todoTextInput={todoTextInput}
-        onSubmit={onSubmit}
-      />
+    <div className="container">
+      <h1>Todo List</h1>
+      <TodoListGroup todos={ todos } />
+      <TodoListGenerator onSubmit={ addTodo } />
     </div>
   );
 };
