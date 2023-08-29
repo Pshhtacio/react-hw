@@ -1,25 +1,34 @@
-import React, { useState } from "react";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "./todoSlice";
 
-const TodoListGenerator = (props) => {
-    const [text, setText] = useState("");
+const TodoListGenerator = () => {
+    const addTodoRef = useRef();
+    const dispatch = useDispatch();
 
-    const onInputChange = (event) => {
-        setText(event.target.value);
-    };
-
-    const onSubmit = () => {
-        props.onSubmit(text);
-        setText("");
+    const addNewTodo = () => {
+        const todo = addTodoRef.current.value;
+        if (!todo) {
+            return;
+        } else {
+            const newTodo = {
+                id: Date.now(),
+                text: todo,
+                done: false,
+            };
+            dispatch(addTodo(newTodo));
+            addTodoRef.current.value = null;
+        }
     };
 
     return (
         <div>
             <input
                 type="text"
-                value={text}
-                onChange={onInputChange}
+                placeholder="Enter a task"
+                ref={ addTodoRef }
             />
-            <button onClick={onSubmit}>Add</button>
+            <button onClick={ addNewTodo }>Add</button>
         </div>
     );
 };
