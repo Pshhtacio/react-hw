@@ -1,9 +1,7 @@
-import {useState} from "react";
-
 const Todo = (props) => {
     return (
         <div className="todo-item">
-            <span>{props.text}</span>
+            <span>{ props.todoText }</span>
         </div>
     );
 
