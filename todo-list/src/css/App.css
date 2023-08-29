@@ -53,3 +53,7 @@ button:hover {
 .todo-item span {
   flex-grow: 1;
 }
+
+.done {
+  text-decoration: line-through;
+}
