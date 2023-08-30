@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Input, Modal, Space, Tooltip } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import "../css/Todo.css";
 import { useTodos } from "../hooks/useTodos";
+import "../css/Todo.css";
 
 const Todo = (props) => {
   const { deleteTodo, toggleTodo, updateTodo } = useTodos();
@@ -65,7 +65,6 @@ const Todo = (props) => {
       <div className="todo-buttons">
         <Tooltip title="Edit">
           <Button
-            type="primary"
             shape="circle"
             icon={<EditOutlined />}
             onClick={showModal}
@@ -73,7 +72,6 @@ const Todo = (props) => {
         </Tooltip>
         <Tooltip title="Delete">
           <Button
-            type="primary"
             danger
             shape="circle"
             icon={<DeleteOutlined />}
