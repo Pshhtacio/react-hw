@@ -1,20 +1,15 @@
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
-import * as todoApi from "../api/todoApi";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useTodos } from "../hooks/useTodos";
 import TodoGroup from "./TodoGroup.js";
 import TodoListGenerator from "./TodoListGenerator.js";
-import {resetTodoTask} from './todoSlice.js';
 
 const TodoList = () => {
+  const { loadTodos } = useTodos();
   const dispatch = useDispatch();
   useEffect(() => {
-    async function fetchData() {
-        const response = await todoApi.getTodoTasks()
-        dispatch(resetTodoTask(response.data));
-    }
-    fetchData();
-  }, [])
-
+    loadTodos();
+  }, []);
 
   return (
     <div className="container">
