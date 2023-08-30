@@ -1,9 +1,11 @@
 import Todo from "./Todo";
+import { useSelector } from 'react-redux'
 
-const TodoGroup = (props) => {
+const TodoGroup = () => {
+  const todos = useSelector((state) => state.todo.todoList);
   return (
     <div>
-      {props.todos.map(((item) => 
+      {todos.map(((item) => 
         <Todo 
           item={item}
         />
