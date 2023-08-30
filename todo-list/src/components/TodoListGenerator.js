@@ -1,12 +1,16 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "./todoSlice";
+import * as todoApi from '../api/todoApi';
+import '../css/Todo.css';
+import { resetTodoTask } from './todoSlice';
+
 
 const TodoListGenerator = () => {
     const addTodoRef = useRef();
     const dispatch = useDispatch();
 
-    const addNewTodo = () => {
+    const addNewTodo = async () => {
+
         const todo = addTodoRef.current.value;
         if (!todo) {
             return;
@@ -16,7 +20,9 @@ const TodoListGenerator = () => {
                 text: todo,
                 done: false,
             };
-            dispatch(addTodo(newTodo));
+            await todoApi.createTodotask(newTodo);
+            const response = await todoApi.getTodoTasks();
+            dispatch(resetTodoTask(response.data));
             addTodoRef.current.value = null;
         }
     };

@@ -7,7 +7,8 @@ const TodoGroup = () => {
     <div>
       {todos.map(((item) => 
         <Todo 
-          item={item}
+          key={item.id}
+          todo={item}
         />
       ))}
     </div>

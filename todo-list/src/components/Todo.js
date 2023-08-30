@@ -1,30 +1,35 @@
+import {useDispatch} from 'react-redux';
+import * as todoApi from '../api/todoApi';
 import '../css/Todo.css';
-import { useDispatch } from 'react-redux';
-import { deleteTodo, toggleTodo } from './todoSlice';
+import { resetTodoTask} from './todoSlice';
 
 const Todo = (props) => {
   const dispatch = useDispatch();
 
-  const handleOnToggle = () => {
-    dispatch(toggleTodo(props.item.id));
+  const handleOnToggle = async () => {
+    await todoApi.updateTodoTask(props.todo.id, {done: !props.todo.done});
+    const response = await todoApi.getTodoTasks();
+    dispatch(resetTodoTask(response.data));
   };
-  
-  const handleDelete = () => {
-    dispatch(deleteTodo(props.item.id));
+
+  const handleDelete =async () => {
+    await todoApi.deleteTodoTask(props.todo.id);
+    const response = await todoApi.getTodoTasks();
+    dispatch(resetTodoTask(response.data));
   };
 
   return (
     <div className="todo-item">
-      <span 
-        className={props.item.done ? 'done' : ''}
+      <span
+        className={props.todo.done ? 'done' : ''}
         onClick={handleOnToggle}
       >
-        {props.item.text}
+        {props.todo.text}
       </span>
-        <button 
+      <button
         className='delete-button'
         onClick={handleDelete}
-        >x</button>
+      >x</button>
     </div>
   );
 };
