@@ -7,7 +7,7 @@ const todoSlice = createSlice({
   },
   reducers: {
     resetTodoTask: (state, action) => {
-        state.todolist = action.payload;
+        state.todoList = action.payload;
     },
     addTodo: (state, action) => {
       state.todoList.push(action.payload);
