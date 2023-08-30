@@ -19,6 +19,11 @@ export const useTodos = () => {
     await todoApi.updateTodoTask(id, todoItem);
     loadTodos();
   };
+  
+  const updateTodo = async (id, todoItem) => {
+    await todoApi.updateTodoTask(id, todoItem);
+    loadTodos();
+  };
 
   const deleteTodo = async (id) => {
     await todoApi.deleteTodoTask(id);
@@ -29,6 +34,7 @@ export const useTodos = () => {
     loadTodos,
     addTodo,
     toggleTodo,
+    updateTodo,
     deleteTodo,
   };
 };
