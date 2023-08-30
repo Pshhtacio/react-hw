@@ -1,5 +1,5 @@
 import './css/App.css';
-import TodoList from './components/TodoList';
+import { NavLink, Outlet } from 'react-router-dom'
 
 function App () {
   return (
@@ -7,18 +7,18 @@ function App () {
       <div className="nav-bar">
         <nav>
           <li>
-            <a href={'/'}>Home</a>
+            <NavLink to={'/'}>Home</NavLink>
           </li>
           <li>
-            <a href={'/'}>Done List</a>
+            <NavLink to={'/done'}>Done List</NavLink>
           </li>
           <li>
-            <a href={'/'}>Help</a>
+            <NavLink to={'/help'}>Help</NavLink>
           </li>
         </nav>
       </div>
       <div>
-        <TodoList />
+        <Outlet></Outlet>
       </div>
     </div>
   );

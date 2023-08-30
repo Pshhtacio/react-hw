@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import TodoListGenerator from "./TodoListGenerator.js";
-import TodoListGroup from "./TodoListGroup.js";
+import TodoGroup from "./TodoGroup.js";
+
 
 const TodoList = () => {
   const todos = useSelector((state) => state.todo.todoList);
@@ -9,7 +10,8 @@ const TodoList = () => {
   return (
     <div className="container">
       <h1>Todo List</h1>
-      <TodoListGroup todos={todos} />
+      <TodoGroup 
+        todos={todos}/>
       <TodoListGenerator />
     </div>
   );

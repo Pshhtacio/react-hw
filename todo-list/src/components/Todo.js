@@ -4,23 +4,22 @@ import { deleteTodo, toggleTodo } from './todoSlice';
 
 const Todo = (props) => {
   const dispatch = useDispatch();
-  const isDone = props.done ? 'done' : '';
 
   const handleOnToggle = () => {
-    dispatch(toggleTodo(props.index));
+    dispatch(toggleTodo(props.item.id));
   };
   
   const handleDelete = () => {
-    dispatch(deleteTodo(props.index));
+    dispatch(deleteTodo(props.item.id));
   };
 
   return (
     <div className="todo-item">
       <span 
-        className={isDone}
+        className={props.item.done ? 'done' : ''}
         onClick={handleOnToggle}
       >
-        {props.todoText}
+        {props.item.text}
       </span>
         <button 
         className='delete-button'
