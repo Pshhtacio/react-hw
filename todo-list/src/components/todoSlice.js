@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
   name: "todo",
@@ -7,7 +7,7 @@ const todoSlice = createSlice({
   },
   reducers: {
     resetTodoTask: (state, action) => {
-        state.todoList = action.payload;
+      state.todoList = action.payload;
     },
     addTodo: (state, action) => {
       state.todoList.push(action.payload);
@@ -20,11 +20,14 @@ const todoSlice = createSlice({
     },
     deleteTodo: (state, action) => {
       const idToDelete = action.payload;
-      const updatedList = state.todoList.filter((item) => item.id !== idToDelete);
+      const updatedList = state.todoList.filter(
+        (item) => item.id !== idToDelete
+      );
       state.todoList = updatedList;
     },
-  }
+  },
 });
 
-export const {resetTodoTask, addTodo, toggleTodo, deleteTodo} = todoSlice.actions;
+export const { resetTodoTask, addTodo, toggleTodo, deleteTodo } =
+  todoSlice.actions;
 export default todoSlice.reducer;

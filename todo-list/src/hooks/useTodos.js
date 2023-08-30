@@ -2,36 +2,33 @@ import { useDispatch } from "react-redux";
 import * as todoApi from "../api/todoApi";
 import { resetTodoTask } from "../components/todoSlice";
 
- 
 export const useTodos = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  async function loadTodos() {
+    const response = await todoApi.getTodoTasks();
+    dispatch(resetTodoTask(response.data));
+  }
 
-    async function loadTodos() {
-        const response = await todoApi.getTodoTasks();
-        dispatch(resetTodoTask(response.data));
-    }
+  const addTodo = async (todoItem) => {
+    await todoApi.createTodotask(todoItem);
+    loadTodos();
+  };
 
-    const addTodo = async (todoItem) => {
-        await todoApi.createTodotask(todoItem);
-        loadTodos();
-    };
+  const toggleTodo = async (id, todoItem) => {
+    await todoApi.updateTodoTask(id, todoItem);
+    loadTodos();
+  };
 
-    const toggleTodo = async (id, todoItem) => {
-        await todoApi.updateTodoTask(id, {done: !todoItem.done});
-        loadTodos();
-    };
+  const deleteTodo = async (id) => {
+    await todoApi.deleteTodoTask(id);
+    loadTodos();
+  };
 
-    const deleteTodo = async (id) => {
-        await todoApi.deleteTodoTask(id);
-        loadTodos();
-    };
-
-    return {
-        loadTodos,
-        addTodo,
-        toggleTodo,
-        deleteTodo,
-    };
-
+  return {
+    loadTodos,
+    addTodo,
+    toggleTodo,
+    deleteTodo,
+  };
 };
