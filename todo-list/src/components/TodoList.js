@@ -8,9 +8,14 @@ import {resetTodoTask} from './todoSlice.js';
 const TodoList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const response = todoApi.getTodoTasks().then(response => {
-      dispatch(resetTodoTask(response.data));
-    });
+    async function fetchData() {
+        const response = await todoApi.getTodoTasks()
+        dispatch(resetTodoTask(response.data));
+    }
+    fetchData();
+
+    // const response = todoApi.getTodoTasks().then(response => {
+    // });
   }, [])
 
 
