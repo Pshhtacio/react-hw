@@ -1,14 +1,15 @@
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import {Button, Input, Modal, Space, Tooltip} from "antd";
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { Button, Input, Modal, Space, Tooltip } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import "../css/Todo.css";
-import {useTodos} from "../hooks/useTodos";
+import { useTodos } from "../hooks/useTodos";
 
 const Todo = (props) => {
   const { deleteTodo, toggleTodo, updateTodo } = useTodos();
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [task, setTask] = useState(props.todo.text);
+  const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
 
   const showModal = () => {
     setOpen(true);
@@ -41,18 +42,35 @@ const Todo = (props) => {
   };
 
   const handleDelete = () => {
+    setDeleteConfirmVisible(true);
+  };
+
+  const handleDeleteConfirm = () => {
     deleteTodo(props.todo.id);
+    setDeleteConfirmVisible(false);
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteConfirmVisible(false);
   };
 
   return (
-    <div className="todo-item">
+    <div className={`todo-item ${props.todo.done ? "done" : ""}`}>
       <Space direction="horizontal">
-        <span
-          className={props.todo.done ? "done" : ""}
-          onClick={handleOnToggle}
-        >
+        <div onClick={handleOnToggle} className="todo-text">
           {props.todo.text}
-        </span>
+        </div>
+      </Space>
+      
+      <div className="todo-buttons">
+        <Tooltip title="Edit">
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<EditOutlined />}
+            onClick={showModal}
+          />
+        </Tooltip>
         <Tooltip title="Delete">
           <Button
             type="primary"
@@ -62,19 +80,11 @@ const Todo = (props) => {
             onClick={handleDelete}
           />
         </Tooltip>
-        <Tooltip title="Edit">
-          <Button
-            type="primary"
-            shape="circle"
-            icon={<EditOutlined />}
-            onClick={showModal}
-          />
-        </Tooltip>
-      </Space>
+      </div>
 
       <Modal
         title="Update Task"
-        open={open}
+        visible={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
@@ -89,6 +99,17 @@ const Todo = (props) => {
           onChange={handleInputChange}
         />
         <br />
+      </Modal>
+
+      <Modal
+        title="Confirm Delete"
+        visible={deleteConfirmVisible}
+        onOk={handleDeleteConfirm}
+        onCancel={handleDeleteCancel}
+        okText="Delete"
+        cancelText="Cancel"
+      >
+        Are you sure you want to delete this task?
       </Modal>
     </div>
   );

@@ -1,35 +1,51 @@
+/* Container for the scrollable todo items */
+.todo-list-container {
+  max-height: 300px;
+  overflow-y: scroll;
+  background-color: #CEDEBD;
+  border: 2px solid #9EB384;
+  border-radius: 15px 0px 0px 0px;
+  margin-bottom: 10px;
+}
+
+/* Todo item container */
 .todo-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin: 10px 0;
-  padding: 10px;
+  margin: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: auto;
-  white-space: normal;
+  padding: 10px;
+  border: 2px solid #9EB384;
+  border-radius: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #FAF1E4;
 }
 
+/* Completed todo text style */
+.todo-item.done {
+  text-decoration: line-through;
+}
+
+/* Buttons container */
+.todo-buttons {
+  display: flex;
+}
+
+/* Button styles */
+.todo-buttons button {
+  margin-left: 5px;
+}
+
+/* Delete button style */
 .delete-button {
-  width: 10%;
-  background-color: red;
-  color: white;
+  background-color: #9EB384;
+  color: #fff;
   border: none;
   padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.delete-button:hover {
-  background-color: firebrick;
-}
-
-.done {
-  text-decoration: line-through;
-}
-
-.todo-item span {
-  flex-grow: 1;
 }

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 const TodoGroup = () => {
   const todos = useSelector((state) => state.todo.todoList);
   return (
-    <div>
+    <div className="todo-list-container">
       {todos.map(((item) => 
         <Todo 
           key={item.id}
