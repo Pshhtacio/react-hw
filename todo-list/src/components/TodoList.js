@@ -13,9 +13,6 @@ const TodoList = () => {
         dispatch(resetTodoTask(response.data));
     }
     fetchData();
-
-    // const response = todoApi.getTodoTasks().then(response => {
-    // });
   }, [])
 
 

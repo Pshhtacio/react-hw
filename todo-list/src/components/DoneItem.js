@@ -5,7 +5,6 @@ const DoneItem = (props) => {
   const navigate = useNavigate();
   const onClickTodoItem = () => {
     navigate("/done/" + props.item.id);
-
   };
 
   return (

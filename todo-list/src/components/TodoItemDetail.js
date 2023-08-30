@@ -5,10 +5,8 @@ const TodoItemDetail = () => {
 
   const {id} = useParams();
   const todos = useSelector((state) => state.todo.todoList);
-  const todoItem = todos.find((item) => item.id == id)
+  const todoItem = todos.find((item) => item.id === id)
   
-  console.log(todoItem)
-
   return (
 
     <div className="todo-detail">
