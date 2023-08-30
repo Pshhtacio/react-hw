@@ -1,0 +1,29 @@
+.help-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #CEDEBD; 
+    overflow: hidden;
+  }
+  
+  .help-page-content {
+    text-align: center;
+    background-color: #FAF1E4; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: #435334; 
+  }
+  
+  p {
+    font-size: 18px;
+    color: #435334; 
+    margin-top: 20px;
+  }
+  
+  
