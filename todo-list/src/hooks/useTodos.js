@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import * as todoApi from "../../src/api/todoApi";
-import { resetAllTodoItems } from "../components/todoListSlice";
+import * as todoApi from "../api/todoApi";
+import { resetTodoTask } from "../components/todoSlice";
 
  
 export const useTodos = () => {
@@ -8,12 +8,12 @@ export const useTodos = () => {
     const dispatch = useDispatch();
 
     async function loadTodos() {
-        const response = await todoApi.getAllTodoItems();
-        dispatch(resetAllTodoItems(response.data));
+        const response = await todoApi.getTodoTasks();
+        dispatch(resetTodoTask(response.data));
     }
 
     const addTodo = async (todoItem) => {
-        await todoApi.addTodoTask(todoItem);
+        await todoApi.createTodotask(todoItem);
         loadTodos();
     };
 
